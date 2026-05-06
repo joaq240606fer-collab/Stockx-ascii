@@ -57,20 +57,29 @@ public class Stockx {
     }
 
     private static void processBidsAndAsks(Item sneaker) {
-        Criteria maxBid = new MaxBid();
-        List<Offer> maximum = maxBid.checkCriteria(sneaker);
-        sneaker.setBid(maximum.isEmpty() ? 0 : maximum.get(0).value());
+        updateBidFromCriteria(sneaker, new MaxBid());
         System.out.println(Stockx.draw(sneaker));
 
-        Criteria minAsk = new MinAsk();
-        List<Offer> minimum = minAsk.checkCriteria(sneaker);
-        sneaker.setAsk(minimum.isEmpty() ? 0 : minimum.get(0).value());
+        updateAskFromCriteria(sneaker, new MinAsk());
         System.out.println(Stockx.draw(sneaker));
 
-        Criteria lastSale = new LastSale();
-        List<Offer> actualSale = lastSale.checkCriteria(sneaker);
-        sneaker.setSale(actualSale.isEmpty() ? 0 : actualSale.get(0).value());
+        updateSaleFromCriteria(sneaker, new LastSale());
         System.out.println(Stockx.draw(sneaker));
+    }
+
+    private static void updateBidFromCriteria(Item sneaker, Criteria criteria) {
+        List<Offer> offers = criteria.checkCriteria(sneaker);
+        sneaker.setBid(offers.isEmpty() ? 0 : offers.get(0).value());
+    }
+
+    private static void updateAskFromCriteria(Item sneaker, Criteria criteria) {
+        List<Offer> offers = criteria.checkCriteria(sneaker);
+        sneaker.setAsk(offers.isEmpty() ? 0 : offers.get(0).value());
+    }
+
+    private static void updateSaleFromCriteria(Item sneaker, Criteria criteria) {
+        List<Offer> offers = criteria.checkCriteria(sneaker);
+        sneaker.setSale(offers.isEmpty() ? 0 : offers.get(0).value());
     }
 
     private static void processSalesBySize(Item sneaker) {
@@ -79,9 +88,10 @@ public class Stockx {
         Criteria sizeFilter = new Size(size);
         Criteria sales = new Sales();
         Criteria andSizeSales = new AndCriteria(sizeFilter, sales);
-        andSizeSales.checkCriteria(sneaker).forEach(System.out::print);
-
+        
         List<Offer> sizeSales = andSizeSales.checkCriteria(sneaker);
+        sizeSales.forEach(System.out::print);
+        
         sneaker.setSale(sizeSales.isEmpty() ? 0 : sizeSales.get(sizeSales.size() - 1).value());
         System.out.println("\n\t\t LAST SALE 9.5 US: " + sneaker.getSale());
     }
@@ -90,19 +100,21 @@ public class Stockx {
         String size = "9.5";
         System.out.println("\n\t\t BIDS 9.5 US");
         Criteria sizeFilter = new Size(size);
+        
         Criteria bids = new Bids();
         Criteria andSizeBids = new AndCriteria(sizeFilter, bids);
-        andSizeBids.checkCriteria(sneaker).forEach(System.out::print);
+        List<Offer> bidsBySize = andSizeBids.checkCriteria(sneaker);
+        bidsBySize.forEach(System.out::print);
 
         Criteria sizeMaxBid = new Max(sizeFilter, bids);
-        List<Offer> sizeBid = sizeMaxBid.checkCriteria(sneaker);
-        sneaker.setBid(sizeBid.isEmpty() ? 0 : sizeBid.get(0).value());
+        List<Offer> maxBidBySize = sizeMaxBid.checkCriteria(sneaker);
+        sneaker.setBid(maxBidBySize.isEmpty() ? 0 : maxBidBySize.get(0).value());
         System.out.println("\n\t\t MAX BID 9.5 US: " + sneaker.getBid());
 
         Criteria asks = new Asks();
         Criteria sizeMinAsk = new Min(sizeFilter, asks);
-        List<Offer> sizeAsk = sizeMinAsk.checkCriteria(sneaker);
-        sneaker.setAsk(sizeAsk.isEmpty() ? 0 : sizeAsk.get(0).value());
+        List<Offer> minAskBySize = sizeMinAsk.checkCriteria(sneaker);
+        sneaker.setAsk(minAskBySize.isEmpty() ? 0 : minAskBySize.get(0).value());
         System.out.println("\n\t\t MIN ASK 9.5 US: " + sneaker.getAsk());
 
         System.out.println(Stockx.draw(sneaker));
