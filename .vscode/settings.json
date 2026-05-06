@@ -2,6 +2,7 @@
     "folder-color.pathColors": [],
     "conventionalCommits.scopes": [
         "Zapatillas",
-        "Bids"
+        "Bids",
+        "Ask"
     ]
 }
