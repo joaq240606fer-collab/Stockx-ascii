@@ -3,6 +3,7 @@
     "conventionalCommits.scopes": [
         "Zapatillas",
         "Bids",
-        "Ask"
+        "Ask",
+        "Filtros"
     ]
 }
