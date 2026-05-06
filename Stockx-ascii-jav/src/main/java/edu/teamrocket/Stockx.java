@@ -84,3 +84,8 @@ public class Stockx {
         List<Offer> sizeBid = sizeMaxBid.checkCriteria(sneaker);
         sneaker.setBid(sizeBid.isEmpty()? 0 : sizeBid.get(0).value());
         System.out.println("\n\t\t MAX BID 9.5 US: " + sneaker.getBid());
+
+        Criteria sizeMinAsk = new Min(size, asks);
+        List<Offer> sizeAsk = sizeMinAsk.checkCriteria(sneaker);
+        sneaker.setAsk(sizeAsk.isEmpty()? 0 : sizeAsk.get(0).value());
+        System.out.println("\n\t\t MIN ASK 9.5 US: " + sneaker.getAsk());
