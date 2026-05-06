@@ -1,5 +1,7 @@
 package edu.teamrocket;
 
+import java.util.List;
+
 public class Stockx {
 
     public static void main(String[] args) {
@@ -89,3 +91,24 @@ public class Stockx {
         List<Offer> sizeAsk = sizeMinAsk.checkCriteria(sneaker);
         sneaker.setAsk(sizeAsk.isEmpty()? 0 : sizeAsk.get(0).value());
         System.out.println("\n\t\t MIN ASK 9.5 US: " + sneaker.getAsk());
+
+        System.out.println(Stockx.draw(sneaker));   
+        
+    }
+
+    public static String draw(Item sneaker) {
+        return
+        "\n\n\t\t" + sneaker.getAsk() + " Buy\t" 
+        + sneaker.getBid() + " Sell \n" +  
+
+        "\t\t" + " _    _" + "\n" +
+        "\t\t" + "(_\\__/(,_" + "\n" +
+        "\t\t" + "| \\ `_////-._" + "\n" +
+        "\t\t" + "J_/___\"=> __/`\\" + "\n" +
+        "\t\t" + "|=====;__/___./" + "\n" +
+        "\t\t" + "\'-\'-\'-\"\"\"\"\"\"\"`" + "\n" +
+        
+        "\t" + sneaker.toString() + "\n" +
+        "\t\tlast sale: " + sneaker.getSale();
+    }
+}
