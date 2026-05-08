@@ -4,35 +4,19 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+ /* test de ceracion zapatillas */
+@test 
+    piublic void bidMaximaTalla() {
+    Item sneaker = new sneaker("9.5", "zapatilla_prueba");
+    sneaker.add(new Bid("13", 550));
+    sneaker.add(new Bid("6", 200));
+    sneaker.add(new Bid("9.5", 479));
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    criteria sizeFilter = new size("9,5")
+    criteria Bids = new Bids();
+    criteria MaxBid = new MaxBid(sizeFilter , bids)
+
+    List<Offer> result = MaxBid.checkCriteria(result)
+
     }
-}
