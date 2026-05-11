@@ -27,12 +27,12 @@ public class Bid implements Offer {
     }
 
     @Override
-    public String Size() {
+    public String size() {
         return size;
     }
 
     @Override
-    public int Value() {
+    public int value() {
         return bid;
     }
 

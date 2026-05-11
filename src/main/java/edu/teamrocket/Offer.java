@@ -3,7 +3,7 @@ package edu.teamrocket;
 /*interface Offer*/
 
 public interface Offer {
-    String Size();
-    int Value();
+    String size();
+    int value();
     int compareTo(Offer offer);
 }

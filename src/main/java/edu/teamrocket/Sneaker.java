@@ -48,4 +48,10 @@ public class Sneaker implements Item {
     public void setBid(int bid) {
         this.bid = bid;
     }
+    public List<Offer> getOffers() {
+        return offers;
+    }
+    public void add(Offer offer) {
+        offers.add(offer);
+    }
 } 

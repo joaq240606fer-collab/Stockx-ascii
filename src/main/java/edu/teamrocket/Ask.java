@@ -22,12 +22,12 @@ public class Ask implements Offer {
     }
 
     @Override
-    public int Value() {
+    public int value() {
         return ask;
     }
 
     @Override
-    public String Size() {
+    public String size() {
         return size;
     }
 
