@@ -22,6 +22,16 @@ public class Ask implements Offer {
     }
 
     @Override
+    public int Value() {
+        return ask;
+    }
+
+    @Override
+    public String Size() {
+        return size;
+    }
+
+    @Override
     public int compareTo(Offer offer) {
         return 0;
     }

@@ -28,6 +28,16 @@ public class Sale implements Offer {
     }
 
     @Override
+    public String Size() {
+        return size;
+    }
+
+    @Override
+    public int Value() {
+        return sale;
+    }
+
+    @Override
     public String toString() {
         return super.toString();
     }
