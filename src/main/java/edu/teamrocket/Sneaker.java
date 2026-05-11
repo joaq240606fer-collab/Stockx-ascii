@@ -2,7 +2,7 @@
 
 package edu.teamrocket;
 
-public class Sneaker{
+public class Sneaker implements Item {
     private String name;
     private String style;
     private int sale;
