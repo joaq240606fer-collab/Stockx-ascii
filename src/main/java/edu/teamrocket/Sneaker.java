@@ -2,12 +2,16 @@
 
 package edu.teamrocket;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Sneaker implements Item {
     private String name;
     private String style;
     private int sale;
     private int ask;
     private int bid;
+    private List<Offer> offers = new ArrayList<>();
 
 
     public Sneaker(String name, String style) {
