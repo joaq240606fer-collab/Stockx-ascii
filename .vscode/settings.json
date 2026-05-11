@@ -11,6 +11,8 @@
         "Item",
         "Offer",
         "sneakkers",
-        "Sales"
+        "Sales",
+        "size",
+        "MAx"
     ]
 }
