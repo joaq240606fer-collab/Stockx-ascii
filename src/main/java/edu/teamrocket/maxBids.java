@@ -1,8 +1,10 @@
+/* class maxBids */
+
 package edu.teamrocket;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Asks implements Criteria {
+public class maxBids implements Criteria {
     private List<Offer> offers = new ArrayList<>();
 
     @Override
@@ -15,3 +17,4 @@ public class Asks implements Criteria {
         return offers;
     }
 }
+
