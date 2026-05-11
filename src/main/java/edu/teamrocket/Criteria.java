@@ -1,3 +1,9 @@
-package edu.teamrocket
+package edu.teamrocket;
 
-public I
+import java.util.List;
+
+public interface Criteria{
+
+    List<Offer> checkCriteria(Item item);
+
+}
