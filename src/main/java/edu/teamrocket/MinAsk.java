@@ -4,14 +4,19 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class MinAsk implements Criteria {
-    private List<Offer> offers = new ArrayList<>();
-
     @Override
     public List<Offer> checkCriteria(Item item) {
+        List<Offer> offers = new ArrayList<>();
+        Offer minOffer = null;
         for (Offer offer : item.getOffers()) {
             if (offer instanceof Ask) {
-                offers.add(offer);
+                if (minOffer == null || offer.value() < minOffer.value()) {
+                    minOffer = offer;
+                }
             }
+        }
+        if (minOffer != null) {
+            offers.add(minOffer);
         }
         return offers;
     }

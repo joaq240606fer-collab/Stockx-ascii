@@ -3,9 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Size implements Criteria {
-    
-    String size = "Size";
-    List<Offer> offers = new ArrayList<>();
+    private final String size;
 
     public Size(String size) {
         this.size = size;
@@ -13,8 +11,9 @@ public class Size implements Criteria {
 
     @Override
     public List<Offer> checkCriteria(Item item) {
+        List<Offer> offers = new ArrayList<>();
         for (Offer offer : item.getOffers()) {
-            if (offer instanceof Size) {
+            if (size.equals(offer.size())) {
                 offers.add(offer);
             }
         }
