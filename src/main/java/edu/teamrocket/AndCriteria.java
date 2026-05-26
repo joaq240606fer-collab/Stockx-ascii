@@ -7,8 +7,9 @@ public class AndCriteria implements Criteria{
    private Criteria criteria;
    private Criteria otherCriteria;
 
-   public AndCriteria(Criteria criteria) {
+   public AndCriteria() {
     this.criteria = criteria;
+    this.otherCriteria = otherCriteria;
    }
    @Override
    public List<Offer> checkCriteria(Item item) {
